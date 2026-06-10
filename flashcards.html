@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plant ID Flashcards</title>
+  <link rel="icon" type="image/x-icon" href="https://www.pngmart.com/files/22/Sprout-PNG-Transparent-HD-Photo.png">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header>
+    <h1>🌿 Plant ID Flashcards 🌿</h1>
+    <p>Who's that plant?!</p>
+  </header>
+
+
+  <!-- SETTINGS PANEL -->
+  <details class="settings" id="settings">
+    <summary>Click to Edit Settings</summary>
+
+    <label for="plant-list">Provide Plant List (one per line):</label>
+    <textarea id="plant-list"></textarea>
+
+    <!-- Button calls startFetch() in app.js -->
+    <button class="btn btn-fetch" onclick="startFetch()">
+      Fetch &amp; Build Deck
+    </button>
+  </details>
+
+
+  <!-- ERROR BOX -->
+  <div id="error"></div>
+
+
+  <!-- LOADING PLANT MESSAGE -->
+  <div id="loading">
+    <p id="loading-text">Loading plants...</p>
+  </div>
+
+
+  <!-- FLASHCARDS -->
+  <div id="deck">
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-wrap">
+      <div class="progress-label" id="progress-label">Card 1 of 0</div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- ACTUAL CARD -->
+    <div class="card-scene" onclick="flipCard()">
+      <div class="card" id="card">
+
+        <!-- FRONT -->
+        <div class="card-front">
+          <img id="card-photo" src="" alt="Plant photo" />
+          <span class="source-badge">iNaturalist</span>
+          <span class="attribution" id="card-attribution"></span>
+          <div class="hint">Tap for name</div>
+        </div>
+
+        <!-- BACK -->
+        <div class="card-back">
+          <div class="scientific-name" id="card-sci-name"></div>
+          <hr  class="name-divider" />
+          <div class="common-name"    id="card-common-name"></div>
+          <div class="flip-hint">Click for image</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="controls">
+      <button class="btn btn-arrow"   id="btn-prev" onclick="prevCard()">←</button>
+      <button class="btn btn-shuffle"               onclick="shuffleDeck()">Shuffle</button>
+      <button class="btn btn-arrow"   id="btn-next" onclick="nextCard()">→</button>
+    </div>
+
+    <!-- Keyboard shortcut reminder -->
+    <p class="key-hints">
+      <kbd>Space</kbd> flip &nbsp;·&nbsp;
+      <kbd>←</kbd> <kbd>→</kbd> navigate &nbsp;·&nbsp;
+      <kbd>S</kbd> shuffle
+    </p>
+
+  </div><!-- end of flashcards -->
+
+
+  <!-- Load JavaScript -->
+  <script src="flashcards.js"></script>
+
+</body>
+</html>
