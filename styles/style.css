@@ -162,10 +162,12 @@ header p {
   justify-content: center;
   text-align: center;
   padding: 40px;
+  box-sizing: border-box;
+  overflow:hidden;
 }
 
 .card-back .scientific-name {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #1a3a1a;
   margin-bottom: 12px;
@@ -181,7 +183,7 @@ header p {
 }
 
 .card-back .common-name {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-style: italic;
   color: #4a7a4a;
 }
