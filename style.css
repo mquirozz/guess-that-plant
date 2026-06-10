@@ -1,0 +1,330 @@
+/* LAYOUT */
+body {
+  background-color: #f0f4f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Georgia, serif;
+  color: #2d2d2f;
+  padding-bottom: 60px;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 30px 20px 10px;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #2e5e2e;
+  margin: 0;
+}
+
+header p {
+  color: #737373;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+
+/* SETTINGS PANEL */
+.settings {
+  width: min(480px, 92vw);
+  margin: 16px 0;
+  background-color: #fff;
+  border: 1px solid #cde0cd;
+  border-radius: 8px;
+  padding: 14px 18px;
+}
+
+.settings summary {
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #2e5e2e;
+  font-weight: bold;
+  list-style: none;
+}
+
+.settings label {
+  display: block;
+  font-size: 0.8rem;
+  color: #444;
+  margin-top: 15px;
+  margin-bottom: 4px;
+}
+
+.settings textarea {
+  width: 100%;
+  height: 150px;
+  padding: 8px 10px;
+  font-family: Georgia, serif;
+  font-size: 0.8rem;
+  border: 1px solid #cde0cd;
+  border-radius: 10px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+
+/* FLASHCARD  */
+.card-scene {
+  width: min(480px, 92vw);
+  height: 560px;
+  margin-top: 16px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+/* "flipped" attribute, rotates the card 180° (shows the back) */
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+
+/* CARD FRONT (image) */
+/* same for both faces */
+.card-front,
+.card-back {
+  position: absolute;        /* stack both faces on top of each other */
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+.card-front {
+  background: #1a1a1a;   /* background while photo loads */
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-front .hint {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 20px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  color: rgba(255,255,255,0.8);
+  font-size: 0.8rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* "iNaturalist" credit*/
+.card-front .source-badge {
+  position: absolute;
+  top: 12px; left: 12px;
+  background: rgba(46,94,46,0.85);
+  color: white;
+  font-size: 0.6rem;
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+
+/* Photo credit */
+.card-front .attribution {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: rgba(0,0,0,0.45);
+  color: rgba(255,255,255,0.75);
+  font-size: 0.1rem;
+  padding: 3px 8px;
+  border-radius: 20px;
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* CARD BACK (name) */
+
+.card-back {
+  background: #f8fdf8;         
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.card-back .scientific-name {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1a3a1a;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.card-back .name-divider {
+  width: 40px;
+  height: 2px;
+  background: #7aa87a;
+  margin: 0 auto 14px;
+  border: none;
+}
+
+.card-back .common-name {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #4a7a4a;
+}
+
+.card-back .flip-hint {
+  margin-top: 60px;
+  font-size: 0.7rem;
+  color: #aaa;
+  text-transform: uppercase;
+}
+
+
+/* BUTTONS */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn {
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: Georgia, serif;
+  font-size: 0.85rem;
+}
+
+.btn-arrow {
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  color: #2d2d2d;
+  font-size: 1 rem;
+  border: 1px solid #cde0cd;
+}
+
+.btn-arrow:hover    { background: #e8f0e8; }
+.btn-arrow:disabled { opacity: 0.3; cursor: default; }  /* at deck edges */
+
+.btn-shuffle {
+  padding: 0 20px;
+  height: 50px;
+  background: #2e5e2e;
+  color: white;
+}
+
+.btn-shuffle:hover { background: #3a7a3a; }
+
+.btn-fetch {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  background: #2e5e2e;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-fetch:hover { background: #3a7a3a; }
+
+
+/* PROGRESS BAR */
+
+.progress-wrap {
+  width: min(480px, 92vw);
+  margin-top: 18px;
+}
+
+/* "Card 3 of 47" text */
+.progress-label {
+  font-size: 0.75rem;
+  color: #888;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.progress-track {
+  height: 4px;
+  background: #d0ddd0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #2e5e2e;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+
+/* LOADING AND ERROR MESSAGES */
+
+#loading {
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+  color: #2e5e2e;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+#loading.visible { display: block; }
+
+#error {
+  display: none;
+  width: min(480px, 92vw);
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: #fdf0ec;
+  border: 1px solid #e8b8a0;
+  border-radius: 8px;
+  color: #c0522a;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+#error.visible { display: block; }
+
+#deck { display: none; }
+
+#deck.visible {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.key-hints {
+  margin-top: 14px;
+  font-size: 0.7rem;
+  color: #aaa;
+  text-align: center;
+}
+
+.key-hints kbd {
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 0.68rem;
+  font-family: monospace;
+}
